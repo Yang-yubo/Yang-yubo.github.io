@@ -20,27 +20,11 @@ export interface Project {
   demo: string;
 }
 
-export interface CTFWriteup {
-  id: string;
-  title: string;
-  category: "Web" | "Reverse" | "Crypto" | "Misc" | "Pwn";
-  competition: string;
-  date: string;
-  content: string;
-  solved: boolean;
-}
 
 export interface Skill {
   name: string;
   level: number; // 1-5
   category: string;
-}
-
-export interface RoadmapItem {
-  year: string;
-  title: string;
-  items: string[];
-  status: "completed" | "current" | "upcoming";
 }
 
 export const skills: Skill[] = [
@@ -52,40 +36,12 @@ export const skills: Skill[] = [
   { name: "Web开发", level: 3, category: "技术方向" },
   { name: "网络安全", level: 3, category: "技术方向" },
   { name: "Linux", level: 3, category: "技术方向" },
-  { name: "CTF", level: 2, category: "技术方向" },
   { name: "数据结构", level: 3, category: "技术方向" },
   { name: "Git", level: 4, category: "工具" },
   { name: "Docker", level: 2, category: "工具" },
   { name: "VMware", level: 3, category: "工具" },
   { name: "Wireshark", level: 3, category: "工具" },
   { name: "Cisco Packet Tracer", level: 2, category: "工具" },
-];
-
-export const roadmap: RoadmapItem[] = [
-  {
-    year: "大一",
-    title: "基础打牢",
-    items: ["Python 基础", "C 语言", "计算机基础", "高等数学", "线性代数"],
-    status: "completed",
-  },
-  {
-    year: "大二",
-    title: "技术深入",
-    items: ["数据结构与算法", "Web 开发", "Linux 系统", "网络安全入门", "数据库"],
-    status: "current",
-  },
-  {
-    year: "大三",
-    title: "实战提升",
-    items: ["企业级项目", "实习经历", "CTF 安全比赛", "开源贡献"],
-    status: "upcoming",
-  },
-  {
-    year: "大四",
-    title: "职业起航",
-    items: ["毕业设计", "秋招/春招", "技术博客沉淀", "行业认证"],
-    status: "upcoming",
-  },
 ];
 
 export const blogPosts: BlogPost[] = [
@@ -560,7 +516,7 @@ export const projects: Project[] = [
     description: "使用 Next.js + TypeScript + Tailwind CSS 构建的全功能个人技术博客，支持 Markdown 渲染、暗色模式、搜索和评论。",
     techStack: ["Next.js", "TypeScript", "Tailwind CSS", "React"],
     image: "/projects/blog.png",
-    github: "https://github.com/yourusername/blog",
+    github: "https://github.com/Yang-yubo/blog",
     demo: "https://yourblog.vercel.app",
   },
   {
@@ -569,7 +525,7 @@ export const projects: Project[] = [
     description: "集成常用 CTF 工具脚本的 Python 工具包，支持编解码、哈希计算、进制转换等功能。",
     techStack: ["Python", "Flask", "SQLite"],
     image: "/projects/ctf.png",
-    github: "https://github.com/yourusername/ctf-toolkit",
+    github: "https://github.com/Yang-yubo/ctf-toolkit",
     demo: "",
   },
   {
@@ -578,7 +534,7 @@ export const projects: Project[] = [
     description: "一系列 Python 自动化脚本，包括文件整理、批量重命名、网络扫描和数据抓取。",
     techStack: ["Python", "Requests", "BeautifulSoup"],
     image: "/projects/automation.png",
-    github: "https://github.com/yourusername/py-automation",
+    github: "https://github.com/Yang-yubo/py-automation",
     demo: "",
   },
   {
@@ -587,60 +543,23 @@ export const projects: Project[] = [
     description: "基于 Python 的多线程端口扫描工具，支持服务识别和操作系统指纹检测。",
     techStack: ["Python", "Socket", "Threading"],
     image: "/projects/scanner.png",
-    github: "https://github.com/yourusername/net-scanner",
+    github: "https://github.com/Yang-yubo/net-scanner",
     demo: "",
   },
 ];
 
-export const ctfWriteups: CTFWriteup[] = [
-  {
-    id: "sqli-basic",
-    title: "SQL注入基础题",
-    category: "Web",
-    competition: "校内CTF 2026",
-    date: "2026-03-20",
-    content: "通过 Union 注入获取 flag，考察基本的 SQL 注入利用。",
-    solved: true,
-  },
-  {
-    id: "reverse-crackme",
-    title: "简单 CrackMe",
-    category: "Reverse",
-    competition: "BUUCTF",
-    date: "2026-04-15",
-    content: "使用 IDA Pro 逆向分析二进制文件，找到正确的输入。",
-    solved: true,
-  },
-  {
-    id: "crypto-rsa",
-    title: "RSA 入门",
-    category: "Crypto",
-    competition: "攻防世界",
-    date: "2026-05-01",
-    content: "基础 RSA 解密，已知 p、q 和 e，求私钥 d 并解密。",
-    solved: true,
-  },
-  {
-    id: "misc-steg",
-    title: "图片隐写术",
-    category: "Misc",
-    competition: "BUUCTF",
-    date: "2026-05-20",
-    content: "使用 LSB 隐写术在图片中隐藏 flag。",
-    solved: true,
-  },
-];
-
 export const siteConfig = {
-  name: "TechSpace",
-  author: "XXX",
-  description: "一个正在探索软件开发与网络安全的计算机专业学生",
-  github: "https://github.com/yourusername",
-  email: "your@email.com",
-  avatar: "/avatar.png",
-  school: "XXX 大学",
-  major: "计算机科学与技术",
+  name: "哲哲",
+  author: "哲哲",
+  description: "学无止境",
+  github: "https://github.com/Yang-yubo",
+  email: "yangyubo0113@gmail.com",
+  avatar: "/avatar.jpg",
+  school: "漯河食品工程职业大学",
+  major: "计算机专业",
   year: "大二在读",
+  direction: "软件开发 & 网络安全",
+  bio: "我是一名计算机专业的大学生，对软件开发和网络安全充满热情。从大一接触 Python 开始，我便踏上了技术学习之路。目前我正在深入学习数据结构、Web 开发和网络安全相关知识，同时积极参加 CTF 比赛来锻炼实战能力。我希望未来能成为一名优秀的软件开发工程师或网络安全工程师。",
   categories: ["全部", "编程", "网络安全", "开发"],
-  blogCategories: ["Python", "C语言", "数据结构", "Web开发", "网络安全", "CTF", "Linux"],
+  blogCategories: ["Python", "C语言", "数据结构", "Web开发", "网络安全", "Linux"],
 };

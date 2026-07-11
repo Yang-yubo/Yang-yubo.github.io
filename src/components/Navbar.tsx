@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { useTheme } from "./ThemeProvider";
 
 const navLinks = [
@@ -9,40 +10,64 @@ const navLinks = [
   { href: "/about", label: "关于" },
   { href: "/blog", label: "博客" },
   { href: "/projects", label: "项目" },
-  { href: "/roadmap", label: "路线" },
-  { href: "/ctf", label: "CTF" },
+  { href: "/tools", label: "工具" },
   { href: "/contact", label: "联系" },
 ];
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const { theme, toggleTheme } = useTheme();
+  const pathname = usePathname();
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [pathname]);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-card-border bg-nav-bg backdrop-blur-md">
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-nav-bg/95 backdrop-blur-xl border-b border-card-border shadow-sm"
+          : "bg-transparent"
+      }`}
+    >
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="flex h-16 items-center justify-between">
+        <div className={`flex items-center justify-between transition-all duration-300 ${scrolled ? "h-14" : "h-16"}`}>
           {/* Logo */}
-          <Link href="/" className="text-lg font-bold tracking-tight hover:text-accent transition-colors">
-            <span className="text-accent">&lt;</span>
-            TechSpace
-            <span className="text-accent"> /&gt;</span>
+          <Link href="/" className="text-lg font-bold tracking-tight group">
+            <span className="text-accent group-hover:text-accent-hover transition-colors">&lt;</span>
+            <span className="group-hover:text-accent transition-colors">TechSpace</span>
+            <span className="text-accent group-hover:text-accent-hover transition-colors"> /&gt;</span>
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="px-3 py-2 text-sm rounded-lg text-muted hover:text-foreground hover:bg-card transition-all"
-              >
-                {link.label}
-              </Link>
-            ))}
+          <div className="hidden md:flex items-center gap-0.5">
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href || (link.href !== "/" && pathname.startsWith(link.href));
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`relative px-3.5 py-2 text-sm rounded-lg transition-all ${
+                    isActive
+                      ? "text-accent font-medium bg-accent/10"
+                      : "text-muted hover:text-foreground hover:bg-card/80"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
             <button
               onClick={toggleTheme}
-              className="ml-2 p-2 rounded-lg text-muted hover:text-foreground hover:bg-card transition-all"
+              className="ml-2 p-2 rounded-lg text-muted hover:text-foreground hover:bg-card/80 transition-all hover:rotate-12"
               aria-label="切换主题"
             >
               {theme === "dark" ? (
@@ -78,17 +103,24 @@ export default function Navbar() {
 
         {/* Mobile Nav */}
         {mobileOpen && (
-          <div className="md:hidden pb-4 animate-fade-in">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setMobileOpen(false)}
-                className="block px-3 py-2 text-sm rounded-lg text-muted hover:text-foreground hover:bg-card transition-all"
-              >
-                {link.label}
-              </Link>
-            ))}
+          <div className="md:hidden pb-4 animate-fade-in border-t border-card-border pt-2 mt-1">
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href || (link.href !== "/" && pathname.startsWith(link.href));
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMobileOpen(false)}
+                  className={`block px-3 py-2.5 text-sm rounded-lg transition-all ${
+                    isActive
+                      ? "text-accent font-medium bg-accent/10"
+                      : "text-muted hover:text-foreground hover:bg-card"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
           </div>
         )}
       </div>
