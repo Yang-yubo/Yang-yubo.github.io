@@ -1,6 +1,0 @@
-1:"$Sreact.fragment"
-2:I[22016,["/zhezhe-blog/_next/static/chunks/3kz5fqr6my6ip.js","/zhezhe-blog/_next/static/chunks/14mrh2-p_w84d.js"],""]
-3:I[97367,["/zhezhe-blog/_next/static/chunks/3kz5fqr6my6ip.js","/zhezhe-blog/_next/static/chunks/14mrh2-p_w84d.js"],"OutletBoundary"]
-4:"$Sreact.suspense"
-0:{"rsc":["$","$1","c",{"children":[["$","div",null,{"className":"min-h-[80vh] flex items-center justify-center px-4 animate-fade-in-up","children":["$","div",null,{"className":"text-center","children":[["$","p",null,{"className":"text-8xl font-bold text-accent mb-4","children":"404"}],["$","h1",null,{"className":"text-2xl font-bold mb-2","children":"页面未找到"}],["$","p",null,{"className":"text-muted mb-8","children":"你访问的页面不存在或已被移除"}],["$","$L2",null,{"href":"/","className":"inline-flex px-6 py-3 rounded-lg bg-accent text-white font-medium hover:bg-accent-hover transition-all","children":"返回首页"}]]}]}],null,["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"_lpkUYebQvjN3hbk8r9Ky"}
-5:null
