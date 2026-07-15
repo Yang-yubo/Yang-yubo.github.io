@@ -1,10 +1,9 @@
 import Link from "next/link";
 import ParticleBackground from "@/components/ParticleBackground";
-import { siteConfig, blogPosts, projects, skills } from "@/data/site";
+import { siteConfig, blogPosts, skills } from "@/data/site";
 
 export default function HomePage() {
   const recentPosts = blogPosts.slice(0, 3);
-  const recentProjects = projects.slice(0, 3);
   const totalViews = blogPosts.reduce((sum, p) => sum + p.views, 0);
 
   return (
@@ -41,7 +40,6 @@ export default function HomePage() {
           <div className="mt-8 flex items-center justify-center gap-8">
             {[
               { label: "文章", value: blogPosts.length },
-              { label: "项目", value: projects.length },
               { label: "阅读", value: totalViews.toLocaleString() },
               { label: "技能", value: skills.length },
             ].map((stat) => (
@@ -55,9 +53,6 @@ export default function HomePage() {
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
             <Link href="/blog" className="btn-glow px-7 py-3 rounded-xl bg-accent text-white font-medium hover:bg-accent-hover transition-all shadow-lg shadow-accent/25 hover:shadow-accent/40 hover:-translate-y-0.5">
               查看博客
-            </Link>
-            <Link href="/projects" className="px-7 py-3 rounded-xl border border-card-border bg-card/80 backdrop-blur-sm font-medium hover:bg-card-border/50 transition-all hover:-translate-y-0.5">
-              我的项目
             </Link>
             <Link href="/tools" className="px-7 py-3 rounded-xl border border-card-border bg-card/80 backdrop-blur-sm font-medium hover:bg-card-border/50 transition-all hover:-translate-y-0.5">
               工具导航
@@ -110,48 +105,6 @@ export default function HomePage() {
                   </div>
                 </div>
               </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <div className="section-divider max-w-6xl mx-auto" />
-
-      {/* Featured Projects */}
-      <section className="py-20 px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex items-center justify-between mb-10">
-            <div>
-              <h2 className="text-2xl font-bold">项目作品</h2>
-              <p className="text-sm text-muted mt-1">我开发的一些开源项目</p>
-            </div>
-            <Link href="/projects" className="text-sm text-accent hover:text-accent-hover transition-colors flex items-center gap-1 group">
-              查看全部
-              <span className="group-hover:translate-x-1 transition-transform">→</span>
-            </Link>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 stagger-children">
-            {recentProjects.map((project) => (
-              <div key={project.id} className="glass-card p-6 rounded-2xl group">
-                <div className="w-full h-36 rounded-xl bg-gradient-to-br from-accent/15 to-purple-500/15 flex items-center justify-center mb-4 group-hover:from-accent/25 group-hover:to-purple-500/25 transition-all">
-                  <span className="text-5xl group-hover:scale-110 transition-transform">📁</span>
-                </div>
-                <h3 className="font-semibold text-lg group-hover:text-accent transition-colors">{project.name}</h3>
-                <p className="mt-2 text-sm text-muted line-clamp-2">{project.description}</p>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {project.techStack.map((tech) => (
-                    <span key={tech} className="px-2.5 py-1 text-xs rounded-lg bg-accent/5 border border-accent/10 text-accent font-medium">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-                <div className="mt-4 pt-3 border-t border-card-border flex items-center gap-3">
-                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-xs text-muted hover:text-accent transition-colors flex items-center gap-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-                    GitHub
-                  </a>
-                </div>
-              </div>
             ))}
           </div>
         </div>
